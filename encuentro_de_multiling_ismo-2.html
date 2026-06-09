@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V Encuentro Internacional de Multilingüismo</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome para Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#00843D',       // Verde Universidad del Quindío
+              greenDark: '#005f2b',
+              orange: '#E8590C',      // Naranja Vibrante
+              orangeLight: '#FFF3EB',
+              orangeDark: '#C14000'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active-lang {
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+  <!-- TOP BAR & LANGUAGE TABS -->
+  <nav class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <!-- Brand Title -->
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-xl bg-brand-green text-white flex items-center justify-center font-bold text-lg shadow-md shadow-brand-green/20">
+            M
+          </div>
+          <div>
+            <span class="font-bold text-sm sm:text-base text-slate-950 block leading-tight">V Encuentro</span>
+            <span class="text-xs text-slate-500 font-semibold block">Multilingüismo 2026</span>
+          </div>
+        </div>
+        
+        <!-- Language Selectors (Text Only Tabs, No Flags) -->
+        <div class="flex items-center bg-slate-100 p-1.5 rounded-xl gap-1">
+          <button onclick="switchLanguage('es')" id="btn-es" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold rounded-lg transition-all duration-250 bg-white text-brand-green shadow-sm">
+            Español
+          </button>
+          <button onclick="switchLanguage('en')" id="btn-en" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-250 text-slate-600 hover:text-slate-900">
+            English
+          </button>
+          <button onclick="switchLanguage('fr')" id="btn-fr" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg transition-all duration-250 text-slate-600 hover:text-slate-900">
+            Français
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- OFFICIAL UNIVERSITIES LOGO GRID -->
+  <section class="bg-white border-b border-slate-100 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Instituciones Organizadoras / Organizing Institutions / Institutions Organisatrices</p>
+      
+      <!-- Logos row with exact filenames provided -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-center justify-items-center">
+        <!-- 0. GIB -->
+<div class="flex flex-col items-center justify-center p-4 bg-slate-50/50 rounded-2xl">
+  <img
+    class="max-h-36 w-auto object-contain transition-transform group-hover:scale-105"
+    src="logo_gib.png"
+    alt="GIB"
+  >
+</div>
+        <!-- 1. Universidad del Quindío (First Position) -->
+        <div class="flex flex-col items-center justify-center p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-brand-green/30 hover:bg-white transition-all duration-300 w-full max-w-[280px] h-[160px] shadow-sm group">
+          <img
+  class="max-h-36 w-auto object-contain transition-transform group-hover:scale-105"
+  src="logo_uniquindio.png"
+/>
+        </div>
+
+        <!-- 2. Universidad Nacional Autónoma de México -->
+        <div class="flex flex-col items-center justify-center p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-brand-orange/30 hover:bg-white transition-all duration-300 w-full max-w-[280px] h-[160px] shadow-sm group">
+         <img
+  class="max-h-28 w-auto object-contain transition-transform group-hover:scale-105"
+  src="logo_unam.png"
+/>
+        </div>
+
+        <!-- 3. Texas State University -->
+        <div class="flex flex-col items-center justify-center p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-brand-orange/30 hover:bg-white transition-all duration-300 w-full max-w-[280px] h-[160px] shadow-sm group">
+          <img
+  class="max-h-28 w-auto object-contain transition-transform group-hover:scale-105"
+  src="logo_texas.png"
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO HEADER SECTION -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-brand-green to-brand-greenDark py-16 sm:py-24 text-white">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-brand-green blur-3xl"></div>
+      <div class="absolute top-1/2 left-10 w-80 h-80 rounded-full bg-brand-orange blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold bg-brand-orange/10 text-brand-orange border border-brand-orange/20 mb-6 uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span> Octubre 28 & 29, 2026
+      </span>
+      
+      <!-- HERO CONTENT - ESPAÑOL -->
+      <div id="hero-es" class="lang-content active-lang">
+        <h1 class="serif-title text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
+          V Encuentro Internacional de Multilingüismo
+        </h1>
+        <p class="mt-4 text-brand-orange text-lg sm:text-xl font-bold tracking-wide uppercase">
+          Didáctica, Saberes, Prácticas y Transformación Social
+        </p>
+      </div>
+
+      <!-- HERO CONTENT - ENGLISH -->
+      <div id="hero-en" class="lang-content">
+        <h1 class="serif-title text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
+          V International Conference on Multilingualism
+        </h1>
+        <p class="mt-4 text-brand-orange text-lg sm:text-xl font-bold tracking-wide uppercase">
+          Pedagogy, Knowledge, Praxis, and Social Transformation
+        </p>
+      </div>
+
+      <!-- HERO CONTENT - FRANÇAIS -->
+      <div id="hero-fr" class="lang-content">
+        <h1 class="serif-title text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
+          V<sup>e</sup> Rencontre Internationale sur le Multilinguisme
+        </h1>
+        <p class="mt-4 text-brand-orange text-lg sm:text-xl font-bold tracking-wide uppercase">
+          Didactiques, Savoirs, Pratiques et Transformation Sociale
+        </p>
+      </div>
+
+      <!-- Modalidad & Dates Quick Stats -->
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-5 flex items-center gap-4 text-left">
+          <div class="w-12 h-12 rounded-xl bg-brand-green/20 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <div>
+            <span class="text-[11px] text-slate-400 block font-bold uppercase tracking-wider">Fecha / Date</span>
+            <span class="text-sm font-bold text-white">Octubre 28 & 29, 2026</span>
+          </div>
+        </div>
+
+        <div class="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-5 flex items-center gap-4 text-left">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/20 text-brand-orange flex items-center justify-center text-xl shrink-0">
+            <i class="fa-solid fa-laptop-house"></i>
+          </div>
+          <div>
+            <span class="text-[11px] text-slate-400 block font-bold uppercase tracking-wider">Modalidad / Format</span>
+            <span class="text-sm font-bold text-white">Híbrido (Presencial / Virtual)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENTATION CONTAINER -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <!-- ================= ESPAÑOL SECTION ================= -->
+    <div id="content-es" class="lang-content active-lang space-y-12">
+      
+      <!-- Presentación -->
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-6">
+        <span class="text-brand-green font-extrabold text-sm uppercase tracking-wider block">Presentación</span>
+        <h2 class="serif-title text-3xl font-extrabold text-slate-900 leading-tight">Invitación Académica</h2>
+        <div class="h-1 w-16 bg-brand-orange rounded-full"></div>
+        <p class="text-slate-600 leading-relaxed text-base">
+          La Universidad del Quindío (Colombia), la Universidad Autónoma del Estado de México (México) y Texas State University (Estados Unidos), en articulación con el Grupo de Investigación en Bilingüismo y el Programa de Licenciatura en Lenguas Modernas con Énfasis en Inglés y Francés, invitan a docentes, investigadores, formadores de formadores, estudiantes y comunidades académicas nacionales e internacionales a participar en el V Encuentro Internacional de Multilingüismo: Didácticas, Saberes, Prácticas y Transformación Social, un espacio de reflexión, diálogo e intercambio académico orientado a pensar críticamente la enseñanza y el aprendizaje de lenguas, las prácticas pedagógicas, la formación docente y los desafíos educativos del mundo contemporáneo.
+        </p>
+        <p class="text-slate-600 leading-relaxed text-base">
+          Este encuentro surgió como una apuesta académica e interinstitucional por fortalecer el diálogo interdisciplinar en torno al multilingüismo, reconociendo las lenguas, los contextos, las experiencias y las prácticas docentes como escenarios de construcción social, formación humana y transformación educativa. En un contexto caracterizado por la diversidad cultural, las transformaciones tecnológicas y los retos de la educación del siglo XXI, el V Encuentro propone un espacio para compartir saberes, experiencias e investigaciones que permitan resignificar la enseñanza y el aprendizaje de lenguas desde perspectivas críticas, interculturales, creativas y contextualizadas.
+        </p>
+        <p class="text-slate-600 leading-relaxed text-base">
+          A través de plenarias, ponencias, talleres y espacios de intercambio académico, el evento busca articular las teorías y las prácticas, fortalecer la formación docente y generar diálogos sobre el papel del multilingüismo, la educación lingüística y la enseñanza como escenarios de transformación social.
+        </p>
+      </section>
+
+      <!-- Objetivo general -->
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 mb-2">Objetivo General</h3>
+        <p class="text-slate-600 leading-relaxed text-base">
+          Promover el diálogo académico e interdisciplinar sobre el multilingüismo, las didácticas de las lenguas, las prácticas pedagógicas y la formación docente como escenarios de construcción de conocimiento, innovación educativa y transformación social.
+        </p>
+      </section>
+
+      <!-- Objetivos específicos -->
+      <section class="space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 text-center">Objetivos Específicos</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">1.</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Promover el diálogo interdisciplinar sobre las didácticas de las lenguas, el bilingüismo, el multilingüismo y la formación docente como campos de conocimiento, práctica y transformación social.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">2.</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Visibilizar experiencias pedagógicas, investigativas y formativas que articulen teoría y práctica en diversos contextos educativos.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">3.</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Fortalecer la formación docente desde perspectivas interculturales, críticas, creativas y mediadas por tecnologías emergentes.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">4.</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Fomentar la reflexión colectiva sobre los desafíos, oportunidades y sentidos de la enseñanza y el aprendizaje de lenguas en el siglo XXI.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4 md:col-span-2">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">5.</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Incentivar la co-construcción de saberes entre docentes en formación, profesorado, investigadores y comunidades académicas nacionales e internacionales.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ejes Temáticos -->
+      <section class="space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 text-center">Ejes Temáticos</h3>
+        <div class="grid grid-cols-1 gap-6">
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">1. Multilingüismo, educación lingüística y transformación social</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Reflexiones y discusiones sobre el papel de las lenguas en la construcción de ciudadanía, inclusión, justicia social, educación intercultural y transformación de contextos para construir experiencias educativas inclusivas, éticas y contextualizadas.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">2. Didácticas emergentes y enseñanza de lenguas</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Experiencias, enfoques, metodologías y propuestas innovadoras para la enseñanza y el aprendizaje de lenguas en contextos diversos.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">3. Formación e investigación docente, prácticas y experiencias pedagógicas</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Experiencias de formación inicial y continua, identidad docente, práctica pedagógica, práctica reflexiva, profesionalización docente, socialización de experiencias, proyectos, investigaciones y prácticas educativas relacionadas con el bilingüismo, multilingüismo y enseñanza de lenguas.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">4. Tecnología, inteligencia artificial y mediación digital</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Procesos de enseñanza y aprendizaje de lenguas mediados por tecnologías emergentes, innovación pedagógica y nuevos entornos educativos.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Metodología del encuentro -->
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">Metodología del Encuentro</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          El encuentro se desarrollará en la modalidad híbrida (presencial y virtual) a través de ponencias, talleres y experiencias pedagógicas, diseñadas para favorecer el intercambio de conocimientos, la reflexión crítica y la construcción colectiva de saberes.
+        </p>
+      </section>
+
+      <!-- Modalidades de participación -->
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">Modalidades de Participación</h3>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-600 font-medium">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle text-brand-green text-[8px]"></i> Plenarias (conferencias magistrales presenciales y virtuales)</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle text-brand-green text-[8px]"></i> Ponencias académicas (virtuales y presenciales)</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle text-brand-green text-[8px]"></i> Talleres pedagógicos (virtuales y presenciales)</li>
+        </ul>
+      </section>
+
+      <!-- Requisitos para el envío de propuestas -->
+      <section class="bg-brand-orangeLight border border-brand-orange/20 p-8 sm:p-12 rounded-3xl space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-brand-orangeDark flex items-center gap-2">
+          <i class="fa-regular fa-file-lines"></i> Requisitos para el Envío de Propuestas
+        </h3>
+        <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+          Las personas interesadas en participar deberán enviar una propuesta relacionada con alguno de los ejes temáticos del encuentro. La propuesta deberá contener:
+        </p>
+        
+        <div class="space-y-4">
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Título</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Máximo 17 palabras.</li>
+              <li>Debe reflejar claramente el tema de la propuesta.</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Resumen (abstract)</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Extensión entre 250 y 400 palabras.</li>
+              <li>Presentación en español, inglés o francés.</li>
+              <li>Debe incluir: objetivo o propósito; contexto o problema abordado; fundamentación conceptual o pedagógica; metodología, experiencia o propuesta desarrollada; aportes, hallazgos, reflexiones o implicaciones.</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Palabras clave</h4>
+            <p class="text-xs text-slate-600">Entre 3 y 5 palabras clave.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Información de participantes</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Nombre completo (así aparecerá en la constancia)</li>
+              <li>Número de documento de identidad (cédula o pasaporte)</li>
+              <li>Cargo e institución</li>
+              <li>Correo electrónico</li>
+              <li>Modalidad de participación</li>
+              <li>Breve reseña biográfica (máximo 100 palabras)</li>
+              <li>Fotografía profesional</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Consideraciones generales</h4>
+            <p class="text-xs text-slate-600">Se aceptarán propuestas relacionadas con enseñanza y aprendizaje de lenguas, bilingüismo, multilingüismo, formación docente, interculturalidad, mediación tecnológica, innovación educativa, inteligencia artificial, didácticas emergentes, prácticas pedagógicas y transformación social. Las propuestas serán evaluadas por el comité académico del evento y los resultados serán comunicados mediante correo electrónico.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cierre e invitación (Solo texto) -->
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Porque enseñar lenguas no significa únicamente transmitir conocimientos, sino construir sentidos, experiencias y horizontes compartidos, el V Encuentro Internacional de Multilingüismo: Didácticas, Saberes, Prácticas y Transformación Social se concibe como una invitación a pensar colectivamente la educación, reconocer la diversidad de voces y fortalecer el compromiso ético y social de la enseñanza.
+          <br><br>
+          Cada experiencia, reflexión y diálogo compartido contribuirá a tejer nuevas posibilidades para una educación más humana, crítica, intercultural y transformadora.
+        </p>
+      </section>
+
+    </div>
+
+
+    <!-- ================= ENGLISH SECTION ================= -->
+    <div id="content-en" class="lang-content space-y-12">      
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-6">
+        <span class="text-brand-green font-extrabold text-sm uppercase tracking-wider block">Introduction</span>
+        <h2 class="serif-title text-3xl font-extrabold text-slate-900 leading-tight">V INTERNATIONAL CONFERENCE ON MULTILINGUALISM: PEDAGOGY, KNOWLEDGE, PRAXIS, AND SOCIAL TRANSFORMATION</h2>
+        <div class="h-1 w-16 bg-brand-orange rounded-full"></div>
+        <p class="text-slate-600 leading-relaxed">
+          October 28–29, 2026. Faculty and scholars from Universidad del Quindío (Colombia), Universidad Autónoma del Estado de México (Mexico), and Texas State University (United States) in collaboration with the Research Group on Bilingualism and the Bachelor’s Degree in Modern Languages with Emphasis on English and French, invite teachers, researchers, teacher educators, students, practitioners, and national and international academic communities to participate in this international event. Aiming to promote innovation and knowledge exchange, the conference will provide space for reflection and dialogue to critically examine the current state of language teaching and learning, pedagogical practices, teacher education, research, and relevant challenges.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          This conference was established as an academic and interinstitutional initiative to promote interdisciplinary dialogue on multilingualism. It recognizes languages, cultural contexts, lived experiences, and teaching practices as powerful sites of social interaction, human development, and educational transformation. In an era shaped by increasing cultural diversity, rapid technological change, and the evolving demands of twenty-first-century education, the Fifth International Meeting provides a forum for sharing research, knowledge, and experiences that advance language teaching and learning through critical, intercultural, creative, and context-responsive approaches.
+        </p>
+        <p class="text-slate-600 leading-relaxed">
+          Through keynote addresses, scholarly presentations, workshops, and opportunities for academic exchange, the conference seeks to bridge theory and practice, strengthen teacher preparation, and foster meaningful dialogue about the role of multilingualism, language education, and teaching in promoting social change. More than a traditional academic gathering, this conference serves as a space for the collaborative construction of knowledge, bringing together diverse voices, experiences, and perspectives to explore language education through critical, ethical, humanistic, and innovative lenses.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 mb-2">GENERAL OBJECTIVE</h3>
+        <p class="text-slate-600 leading-relaxed">
+          To promote academic and interdisciplinary dialogue on multilingualism, language pedagogies, pedagogical practices, research, and teacher education as spaces for knowledge construction, educational innovation, and social transformation.
+        </p>
+      </section>
+
+      <section class="space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 text-center">SPECIFIC OBJECTIVES</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">To promote interdisciplinary dialogue on language teaching, multilingualism, and teacher education as areas of scholarship, professional practice, and social change.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">To highlight innovative teaching, research, and educational initiatives that bridge theory and practice across a variety of learning environments.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">To strengthen teacher preparation through intercultural, critical, creative, and technology-enhanced approaches to teaching and learning.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">To encourage collective reflection on the challenges, opportunities, and evolving role of language teaching and learning in the twenty-first century.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4 md:col-span-2">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">To foster collaboration and knowledge sharing among teacher candidates, educators, researchers, and academic communities from across the United States and around the world.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 text-center">Conference Strands</h3>
+        <div class="grid grid-cols-1 gap-6">
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">1. Multilingualism, Language Education, and Social Transformation</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Reflections and discussions on the role of languages in the construction of citizenship, inclusion, social justice, intercultural education, and the transformation of contexts to build inclusive, ethical, and context-sensitive educational experiences.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">2. Emerging Pedagogies and Language Teaching</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Experiences, approaches, methodologies, and innovative proposals for language teaching and learning in diverse contexts.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">3. Teacher Education and Research, Pedagogical Practices, and Educational Experiences</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Experiences related to initial and continuing teacher education, teacher identity, pedagogical practice, reflective practice, teacher professionalization, the dissemination of experiences, projects, research, and educational practices associated with bilingualism, multilingualism, and language teaching.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">4. Technology, Artificial Intelligence, and Digital Mediation</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Language teaching and learning processes mediated by emerging technologies, pedagogical innovation, and new educational environments.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">MEETING METHODOLOGY</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          The conference will be offered in a hybrid format, with both in-person and virtual participation options. Through scholarly presentations, workshops, and innovative teaching and learning experiences, the event will promote knowledge sharing, critical reflection, and collaborative learning.
+        </p>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          The conference aims to bring together teacher candidates, educators, researchers, and academic communities to engage in meaningful dialogue and exchange. By connecting theory, practice, and social impact, the event encourages exploration of language education through intercultural, critical, and context-responsive perspectives.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">PRESENTATION FORMAT</h3>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-600 font-medium">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle text-brand-green text-[8px]"></i> Concurrent Presentations (virtual and onsite)</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle text-brand-green text-[8px]"></i> Workshops (virtual and onsite)</li>
+        </ul>
+      </section>
+
+      <section class="bg-brand-orangeLight border border-brand-orange/20 p-8 sm:p-12 rounded-3xl space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-brand-orangeDark flex items-center gap-2">
+          <i class="fa-regular fa-file-lines"></i> GUIDELINES FOR PROPOSALS
+        </h3>
+        <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+          Please submit a proposal related to one of the conference strands. The proposal should include:
+        </p>
+        <div class="space-y-4">
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Title</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Maximum length: 17 words.</li>
+              <li>Clearly reflect the focus of the proposal.</li>
+            </ul>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Abstract</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Length: 250–400 words.</li>
+              <li>Written in Spanish, English, or French.</li>
+              <li>Make sure to include: Objective or purpose; Context or problem to be addressed; Conceptual, theoretical, or pedagogical foundation; Findings, implications, contribution and relevance.</li>
+            </ul>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Keywords</h4>
+            <p class="text-xs text-slate-600">Three to five keywords.</p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Participant Information</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Full name (as it will appear on the certificate of participation)</li>
+              <li>ID number (passport preferred)</li>
+              <li>Rank and institution, Email address</li>
+              <li>Participation modality (virtual or onsite)</li>
+              <li>Brief biographical data (maximum 100 words)</li>
+              <li>Professional photograph (professional headshot preferred)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">GENERAL CONSIDERATIONS</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Proposals related to language teaching and learning, bilingualism, multilingualism, teacher education, interculturality, technological mediation, educational innovation, artificial intelligence, emerging pedagogies, pedagogical practices, and social transformation are relevant.
+        </p>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Proposals will be evaluated by the conference committee and invited via email.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">TARGET AUDIENCE</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          The meeting is intended for language teachers, pre-service teachers, practitioners, university educators, researchers, graduate and undergraduate students, as well as individuals interested in language teaching and learning, bilingualism, multilingualism, and language education.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900" >FINAL THOUGHTS AND INVITATION</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Teaching languages involves far more than the transmission of knowledge; it is a process of creating meaning, fostering relationships, and expanding shared understanding. With this vision in mind, the Fifth International Meeting on Multilingualism: Language Pedagogies, Knowledge, Practices, and Social Transformation invites participants to engage in meaningful dialogue about the future of education, celebrate diverse perspectives, and strengthen the ethical and social responsibilities of educators.
+        </p>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Through the exchange of ideas, experiences, and research, participants will contribute to shaping new possibilities for language education that is more human-centered, critically informed, intercultural, and transformative. Together, we seek to advance educational practices that promote equity, understanding, and positive social change.
+        </p>
+      </section>
+</div>
+
+    <!-- ================= FRANÇAIS SECTION ================= -->
+    <div id="content-fr" class="lang-content space-y-12">
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-6">
+        <span class="text-brand-green font-extrabold text-sm uppercase tracking-wider block">Présentation</span>
+        <h2 class="serif-title text-3xl font-extrabold text-slate-900 leading-tight">Ve RENCONTRE INTERNATIONALE SUR LE MULTILINGUISME : DIDACTIQUES, SAVOIRS, PRATIQUES ET TRANSFORMATION SOCIALE</h2>
+        <div class="h-1 w-16 bg-brand-orange rounded-full"></div>
+        <p class="text-slate-600 leading-relaxed text-base">
+          L’Universidad del Quindío (Colombie), L’Universidad Autónoma del Estado de México (Mexique) et Texas State University (États-Unis), en collaboration avec le Groupe de Recherche en Bilinguisme et le Programme de Licence en Langues Modernes parcours anglais et en français, invitent les enseignants, les chercheurs, les formateurs d’enseignants, les étudiants ainsi que les communautés académiques nationales et internationales à participer à la Ve Rencontre Internationale sur le Multilinguisme : Didactiques, Savoirs, Pratiques et Transformation Sociale, un espace de réflexion, de dialogue et d’échange académique visant à penser de manière critique l’enseignement et l’apprentissage des langues, les pratiques pédagogiques, la formation des enseignants et les défis éducatifs du monde contemporain.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 mb-2">OBJECTIF GÉNÉRAL</h3>
+        <p class="text-slate-600 leading-relaxed text-base">
+          Promouvoir le dialogue académique et interdisciplinaire sur le multilinguisme, les didactiques des langues, les pratiques pédagogiques et la formation des enseignants comme espaces de construction des connaissances, d’innovation éducative et de transformation sociale.
+        </p>
+      </section>
+
+      <section class="space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 text-center">OBJECTIFS SPÉCIFIQUES</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Promouvoir le dialogue interdisciplinaire sur les didactiques des langues, le multilinguisme et la formation des enseignants comme champs de savoir, de pratique et de transformation sociale.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Mettre en lumière des expériences pédagogiques, de recherche et de formation articulant théorie et pratique dans divers contextes éducatifs.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Renforcer la formation des enseignants à partir de perspectives interculturelles, critiques, créatives et médiatisées par les technologies émergentes.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Favoriser une réflexion collective sur les défis, les opportunités et les significations de l’enseignement et de l’apprentissage des langues au XXIe siècle.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex gap-4 md:col-span-2">
+            <span class="text-xl text-brand-green shrink-0 font-extrabold">•</span>
+            <p class="text-slate-600 text-sm leading-relaxed">Encourager la co-construction des savoirs entre les futurs enseignants, les enseignants, les chercheurs et les communautés académiques nationales et internationales.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-slate-900 text-center">AXES THÉMATIQUES</h3>
+        <div class="grid grid-cols-1 gap-6">
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">1. Multilinguisme, éducation linguistique et transformation sociale</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Réflexions et discussions sur le rôle des langues dans la construction de la citoyenneté, de l’inclusion, de la justice sociale, de l’éducation interculturelle et de la transformation des contextes afin de promouvoir des expériences éducatives inclusives, éthiques et contextualisées.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">2. Didactiques émergentes et enseignement des langues</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Expériences, approches, méthodologies et propositions innovantes pour l’enseignement et l’apprentissage des langues dans des contextes variés.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">3. Formation et recherche des enseignants, pratiques et expériences pédagogiques</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Expériences de formation initiale et continue, identité professionnelle, pratique pédagogique, pratique réflexive, professionnalisation enseignante, partage d’expériences, projets, recherches et pratiques éducatives liées au bilinguisme, au multilinguisme et à l’enseignement des langues.</p>
+          </div>
+          <div class="bg-gradient-to-br from-white to-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200/60 shadow-sm">
+            <h4 class="font-bold text-slate-900 text-lg mb-2">4. Technologie, intelligence artificielle et médiation numérique</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">Processus d’enseignement et d’apprentissage des langues médiatisés par les technologies émergentes, l’innovation pédagogique et les nouveaux environnements éducatifs.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">MÉTHODOLOGIE DE LA RENCONTRE</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          La rencontre se déroulera selon une modalité hybride (en présentiel et à distance) à travers des communications scientifiques, des ateliers pédagogiques et des expériences pédagogiques conçus pour favoriser l’échange de connaissances, la réflexion critique et la construction collective des savoirs.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">MODALITÉS DE PARTICIPATION</h3>
+        <ul class="space-y-2 text-sm sm:text-base text-slate-600 font-medium">
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle text-brand-green text-[8px]"></i> Communications scientifiques (présentiel et en ligne)</li>
+          <li class="flex items-center gap-3"><i class="fa-solid fa-circle text-brand-green text-[8px]"></i> Ateliers pédagogiques (présentiel et en ligne)</li>
+        </ul>
+      </section>
+
+      <section class="bg-brand-orangeLight border border-brand-orange/20 p-8 sm:p-12 rounded-3xl space-y-6">
+        <h3 class="serif-title text-2xl font-bold text-brand-orangeDark flex items-center gap-2">
+          <i class="fa-regular fa-file-lines"></i> CONDITIONS DE SOUMISSION DES PROPOSITIONS
+        </h3>
+        <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+          Les personnes intéressées à participer devront soumettre une proposition en lien avec l’un des axes thématiques de la rencontre.
+        </p>
+        
+        <div class="space-y-4">
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Titre</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Maximum 17 mots.</li>
+              <li>Le titre doit refléter clairement le thème de la proposition.</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Résumé</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Entre 250 et 400 mots.</li>
+              <li>Présentation en espagnol, en anglais ou en français.</li>
+              <li>Il doit inclure : l’objectif ou la finalité ; le contexte ou le problème abordé ; le fondement conceptuel ou pédagogique ; la méthodologie, l’expérience ou la proposition développée ; les contributions, résultats, réflexions ou implications.</li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Mots-clés</h4>
+            <p class="text-xs text-slate-600">Entre trois et cinq mots-clés.</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-brand-orange/10">
+            <h4 class="font-bold text-slate-900 text-sm mb-1">Informations sur les participants</h4>
+            <ul class="list-disc pl-5 text-xs text-slate-600 space-y-1">
+              <li>Nom complet (tel qu’il apparaîtra sur l’attestation)</li>
+              <li>Numéro de pièce d’identité (carte d’identité ou passeport)</li>
+              <li>Fonction et institution</li>
+              <li>Adresse électronique</li>
+              <li>Modalité de participation</li>
+              <li>Notice biographique (100 mots maximum)</li>
+              <li>Photographie professionnelle</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">CONSIDÉRATIONS GÉNÉRALES</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Seront acceptées les propositions portant sur l’enseignement et l’apprentissage des langues, le bilinguisme, le multilinguisme, la formation des enseignants, l’interculturalité, la médiation technologique, l’innovation éducative, l’intelligence artificielle, les didactiques émergentes, les pratiques pédagogiques et la transformation sociale.
+        </p>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Les propositions seront évaluées par le comité académique de l’événement et les résultats seront communiqués par courrier électronique.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">PUBLIC CIBLE</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          La rencontre s’adresse aux futurs enseignants, aux enseignants universitaires, aux chercheurs, aux diplômés, aux étudiants de premier cycle et de cycles supérieurs, ainsi qu’à toute personne intéressée par l’enseignement et l’apprentissage des langues, le bilinguisme, le multilinguisme et l’éducation linguistique.
+        </p>
+      </section>
+
+      <section class="bg-white p-8 sm:p-12 rounded-3xl border border-slate-100 shadow-sm space-y-4">
+        <h3 class="serif-title text-2xl font-bold text-slate-900">CONCLUSION ET INVITATION</h3>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Parce qu’enseigner les langues ne signifie pas uniquement transmettre des connaissances, mais aussi construire des significations, des expériences et des horizons partagés, la Ve Rencontre Internationale sur le Multilinguisme : Didactiques, Savoirs, Pratiques et Transformation Sociale se veut une invitation à penser collectivement l’éducation, à reconnaître la diversité des voix et à renforcer l’engagement éthique et social de l’enseignement.
+        </p>
+        <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+          Chaque expérience, réflexion et dialogue partagé contribuera à tisser de nouvelles possibilités pour une éducation plus humaine, critique, interculturelle et transformatrice.
+        </p>
+      </section>
+</div>
+
+    </div>
+
+  </main>
+
+  <!-- SUBMISSION ACTION SECTION -->
+  <section class="bg-gradient-to-br from-brand-green to-brand-greenDark text-white py-16" id="contacto">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      
+      <!-- EMAIL PANEL - ESPAÑOL -->
+      <div id="submit-es" class="lang-content active-lang space-y-4">
+        <h2 class="serif-title text-3xl sm:text-4xl font-extrabold">¿Listo para Enviar tu Propuesta?</h2>
+        <a href="mailto:gib@uniquindio.edu.co" class="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orangeDark text-white font-extrabold text-base px-8 py-4 rounded-2xl shadow-lg transition-all">
+          <i class="fa-solid fa-paper-plane"></i> Enviar a: gib@uniquindio.edu.co
+        </a>
+      </div>
+
+      <!-- EMAIL PANEL - ENGLISH -->
+      <div id="submit-en" class="lang-content space-y-4">
+        <h2 class="serif-title text-3xl sm:text-4xl font-extrabold">Ready to Submit Your Proposal?</h2>
+        <a href="mailto:gib@uniquindio.edu.co" class="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orangeDark text-white font-extrabold text-base px-8 py-4 rounded-2xl shadow-lg transition-all">
+          <i class="fa-solid fa-paper-plane"></i> Send to: gib@uniquindio.edu.co
+        </a>
+      </div>
+
+      <!-- EMAIL PANEL - FRANÇAIS -->
+      <div id="submit-fr" class="lang-content space-y-4">
+        <h2 class="serif-title text-3xl sm:text-4xl font-extrabold">Prêt(e) à Soumettre Votre Proposition ?</h2>
+        <a href="mailto:gib@uniquindio.edu.co" class="inline-flex items-center gap-3 bg-brand-orange hover:bg-brand-orangeDark text-white font-extrabold text-base px-8 py-4 rounded-2xl shadow-lg transition-all">
+          <i class="fa-solid fa-paper-plane"></i> Envoyer à: gib@uniquindio.edu.co
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-500 py-12 text-center text-xs">
+    <p>&copy; 2026. V Encuentro Internacional de Multilingüismo. Contacto: gib@uniquindio.edu.co</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function switchLanguage(langCode) {
+      document.querySelectorAll('.lang-content').forEach(div => div.classList.remove('active-lang'));
+      document.getElementById('hero-' + langCode).classList.add('active-lang');
+      document.getElementById('content-' + langCode).classList.add('active-lang');
+      document.getElementById('submit-' + langCode).classList.add('active-lang');
+      
+      const buttons = document.querySelectorAll('button[id^="btn-"]');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-white', 'text-brand-green', 'shadow-sm', 'font-bold');
+        btn.classList.add('text-slate-600', 'font-medium');
+      });
+      document.getElementById('btn-' + langCode).classList.add('bg-white', 'text-brand-green', 'shadow-sm', 'font-bold');
+    }
+  </script>
+</body>
+</html>
